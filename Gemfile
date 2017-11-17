@@ -5,6 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Use Bootstrap gem
+gem 'bootstrap-sass'
+gem 'bootstrap-social-rails'
 #Make HTTP requests
 gem 'httparty'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
