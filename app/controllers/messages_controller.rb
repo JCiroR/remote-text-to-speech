@@ -8,16 +8,19 @@ class MessagesController < ApplicationController
   # GET /messages.json
   def index
     @messages = Message.all
+    @message = Message.new
   end
 
   # GET /messages/1
   # GET /messages/1.json
   def show
+    @messages = Message.all
   end
 
   # GET /messages/new
   def new
    @message = Message.new
+   @messages = Message.all
   end
 
   # GET /messages/1/edit
@@ -27,11 +30,11 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
+    @messages = Message.all
     @message = Message.new(message_params)
-    
     respond_to do |format|
       if @message.save
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
+        format.html {redirect_back fallback_location: root_path, notice: 'Message was successfully created.' }
         format.json { render :show, status: :created, location: @message }
         MessageWrapper.postMessage(@message.text)
       else

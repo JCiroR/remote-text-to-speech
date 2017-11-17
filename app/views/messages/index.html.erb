@@ -1,4 +1,6 @@
 <p id="notice"><%= notice %></p>
+<h1>New Message</h1>
+<%= render 'form', message: @message %>
 
 <h1>Messages</h1>
 
@@ -22,5 +24,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Message', new_message_path %>
