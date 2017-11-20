@@ -36,9 +36,10 @@ class MessagesController < ApplicationController
       if @message.save
         format.html {redirect_back fallback_location: root_path, notice: 'Message was successfully created.' }
         format.json { render :show, status: :created, location: @message }
+        #Post message to Thingspeak
         MessageWrapper.postMessage(@message.text)
       else
-        format.html { render :new }
+        format.html {render :new }
         format.json { render json: @message.errors, status: :unprocessable_entity }
       end
     end
